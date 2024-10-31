@@ -2,7 +2,11 @@ local M = {}
 
 -- Options that will be passed to the
 -- require("mason-lspconfig").setup function
-M.mason_opts = {}
+M.mason_opts = {
+  ensure_install = {
+    "rust_analyzer"
+  }
+}
 
 -- Options that will be passed to the
 -- require("lspconfig")[server].setup function
@@ -10,9 +14,30 @@ M.lspconfig_opts = {
   capabilities = require("cmp_nvim_lsp").default_capabilities()
 }
 
+M.disabled = function() end
+
 M.handlers = {
   function(server)
     require("lspconfig")[server].setup(M.lspconfig_opts)
+  end,
+  ["rust_analyzer"] = function()
+    vim.g.rustaceanvim = {
+      tools = {
+        hover = {
+          border = {
+          { "┌", "FloatBorder" },
+          { "─", "FloatBorder" },
+          { "┐", "FloatBorder" },
+          { "│", "FloatBorder" },
+          { "└", "FloatBorder" },
+          { "─", "FloatBorder" },
+          { "┘", "FloatBorder" },
+          { "│", "FloatBorder" },
+
+          }
+        }
+      }
+    }
   end
 }
 
