@@ -1,0 +1,4 @@
+keymap:
+  - name: Ctrl + Alt to AltGr
+    remap:
+      Ctrl-Alt_L-q: @

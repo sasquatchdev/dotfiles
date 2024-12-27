@@ -2,4 +2,6 @@ if status is-interactive
 	set fish_greeting
 end
 
-eval "$(starship init fish)"
+export PATH="/home/sasquatchdev/.cargo/bin:$PATH"
+
+starship init fish | source
