@@ -4,7 +4,9 @@ return {
 
   ---@module 'oil'
   ---@type oil.SetupOpts
-  opts = {},
+  opts = {
+    skip_confirm_for_simple_edits = true,
+  },
   config = function(_, opts)
     require("oil").setup(opts)
     vim.keymap.set("n", "-", ":Oil<Return>", { desc = "Opens current/parent folder." })
